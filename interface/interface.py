@@ -9,7 +9,8 @@ from schemas.cities import *
 class SunriseSunsetApp(Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("350x300")
+        self.geometry("500x200")
+        self.config(padx=100,pady=50)
         self.title("Sunrise/Sunset Graph Generator")
        
         # Create label for start date

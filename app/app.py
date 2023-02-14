@@ -18,6 +18,16 @@ thread_local: threading.local = threading.local()
 
 class App(Thread):
     def __init__(self, start_dt,end_dt,name_time_zone, lng, lat):
+        """
+        Initializes the App class with start and end dates, name of time zone, longitude and latitude.
+
+        Parameters:
+        start_dt (str): The start date in the format 'mm-dd-yyyy'.
+        end_dt (str): The end date in the format 'mm-dd-yyyy'.
+        name_time_zone (str): The name of the time zone.
+        lng (float): The longitude.
+        lat (float): The latitude.
+        """
         super().__init__()
         self.start_dt = start_dt
         self.end_dt = end_dt
@@ -26,9 +36,24 @@ class App(Thread):
         self.lat = lat
     @property
     def start_dt(self):
+        """
+        Property that gets the start date.
+
+        Returns:
+        The start date as a date object.
+        """
         return self._start_dt
     @start_dt.setter
     def start_dt(self,start_dt:str):
+        """
+        Property setter that sets the start date.
+
+        Parameters:
+        start_dt (str): The start date in the format 'mm-dd-yyyy'.
+
+        Raises:
+        StartDateFormatException: If the start date format is incorrect.
+        """
         try:
             start_dt = start_dt.replace("/","-")
             start_dt = datetime.strptime(start_dt, '%m-%d-%Y')
@@ -38,9 +63,24 @@ class App(Thread):
     
     @property
     def end_dt(self):
+        """
+        Property that gets the end date.
+
+        Returns:
+        The end date as a date object.
+        """
         return self._end_dt
     @end_dt.setter
     def end_dt(self,end_dt:str):
+        """
+        Property setter that sets the end date.
+
+        Parameters:
+        end_dt (str): The end date in the format 'mm-dd-yyyy'.
+
+        Raises:
+        EndDateFormatException: If the end date format is incorrect.
+        """
         try:
             end_dt = end_dt.replace("/","-")
             end_dt = datetime.strptime(end_dt, '%m-%d-%Y')
@@ -50,22 +90,58 @@ class App(Thread):
 
     @property
     def name_time_zone(self):
+        """
+        Property that gets the name of the time zone.
+
+        Returns:
+        The name of the time zone as a string.
+        """
         return self._name_time_zone
     @name_time_zone.setter
     def name_time_zone(self,name_time_zone:str):
+        """
+        This setter method sets the value of the 'name_time_zone' attribute.
+
+        :param name_time_zone: The name of the time zone to set
+        :type name_time_zone: str
+        """
         self._name_time_zone = name_time_zone
     
     @property
     def lng(self):
+        """
+        This getter method returns the value of the 'lng' attribute.
+
+        :return: The value of the 'lng' attribute
+        :rtype: float
+        """
         return self._lng
     @lng.setter
     def lng(self,lng:float):
+        """
+        This setter method sets the value of the 'lng' attribute.
+
+        :param lng: The value of the longitude to set
+        :type lng: float
+        """
         self._lng = lng
     @property
     def lat(self):
+        """
+        This getter method returns the value of the 'lat' attribute.
+
+        :return: The value of the 'lat' attribute
+        :rtype: float
+        """
         return self._lat
     @lat.setter
     def lat(self,lat:str):
+        """
+        This setter method sets the value of the 'lat' attribute.
+
+        :param lat: The value of the latitude to set
+        :type lat: float
+        """
         self._lat = lat
 
     def get_session(self):
